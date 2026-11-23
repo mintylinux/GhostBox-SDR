@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghostbox-sdr"
+version = "0.1.0"
+description = "Receive-only RTL-SDR FM sweeper for Linux and Raspberry Pi"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.24", "scipy>=1.11", "sounddevice>=0.4.6"]
+
+[project.optional-dependencies]
+gui = ["PySide6>=6.6"]
+dev = ["pytest>=8", "ruff>=0.9"]
+
+[project.scripts]
+ghostbox-sdr = "ghostbox_sdr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
